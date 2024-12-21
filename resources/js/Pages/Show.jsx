@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react'
+import { Link, useForm } from '@inertiajs/react'
 import React from 'react'
 import { useRoute } from '../../../vendor/tightenco/ziggy';
 
@@ -27,6 +27,7 @@ const Show = ({ post }) => {
                         Delete
                     </button>
                 </form>
+                <Link href={route('posts.edit', post)} className="px-4 py-2 text-sm text-white bg-green-500 rounded-md ms-2">Edit</Link>
             </div>
         </div>
     )

@@ -52,7 +52,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return inertia('Edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -60,7 +62,11 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->update($request->validated());
+        return redirect('/')->with(
+            'message',
+            'Post updated successfully'
+        );
     }
 
     /**
@@ -70,7 +76,7 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect('/')->with( 
+        return redirect('/')->with(
             'message',
             'Post deleted successfully'
         );
