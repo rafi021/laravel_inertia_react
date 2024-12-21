@@ -1,15 +1,26 @@
 import { Link } from '@inertiajs/react'
-import React from 'react'
 
-const Home = ({ name }) => {
+const Home = ({ posts }) => {
     return (
         <>
-            <div className='title'>Hello {name} </div>
-            <Link preserveScroll href="/" className='block mt-[1000px] title'>
-                {new Date().toLocaleTimeString()}
-            </Link>
+            <h1 className='title'>Hello </h1>
+            <div className="">
+                {posts.map(post => (
+                    <div key={post.id} className="p-4 border-b-2">
+                        <div className="text-sm text-gray-500">
+                            <span>Posted On: </span>
+                            <span>{new Date(post.created_at).toLocaleTimeString()}</span>
+                        </div>
+                        <div className="">
+                            <h5 className="text-lg font-semibold">{post.title}</h5>
+                            <p className="text-sm">{post.content}</p>
+                            {/* <Link href={route('post.show', post.id)} className="btn btn-primary">View</Link> */}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </>
     )
 }
 
-export default Home
+export default Home;
