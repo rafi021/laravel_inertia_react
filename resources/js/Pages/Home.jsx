@@ -3,6 +3,7 @@ import Pagination from '../Components/Pagination';
 import Posts from '../Components/Posts';
 
 const Home = ({ posts }) => {
+ 
     return (
         <>
             <h1 className='title'>Hello </h1>
