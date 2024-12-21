@@ -1,4 +1,4 @@
-import { Link, usePage } from '@inertiajs/react'
+import { Head, Link, usePage } from '@inertiajs/react'
 import Pagination from '@/Components/Pagination';
 import Posts from '@/Components/Posts';
 import { useState } from 'react';
@@ -6,13 +6,24 @@ import { useState } from 'react';
 const Home = ({ posts }) => {
     const { flash } = usePage().props;
     const [flashMsg, setFlashMsg] = useState(flash.message);
-    console.log(flashMsg);
+    const { component } = usePage();
+
+    // Remove flash message after 2 seconds
     setTimeout(() => {
         setFlashMsg(null);
     }, 2000);
 
     return (
         <>
+            <Head>
+                <title>{component}</title>
+                <meta
+                    head-key="description"
+                    name="description"
+                    content="This is the Create description"
+                />
+            </Head>
+
             <h1 className='title'>Hello </h1>
             {
                 flashMsg &&
